@@ -43,11 +43,6 @@ def CreateDeck():
     response = requests.get(BASE_URL + deck_id + "/draw/?count=2")
     data = response.json()
     return data["cards"], data["remaining"]
-# Added function only to reshuffle the deck instead of creating a new one. will be used later
-    def ReShuffleDeck(deck_id):
-    response = requests.get(BASE_URL + deck_id + "/shuffle/")
-    data = response.json
-    return data["remaining"]
 
 # Ranking system for cards that are strings.  
     def ConvertValues(value):
