@@ -43,9 +43,13 @@ def CreateDeck():
     response = requests.get(BASE_URL + deck_id + "/draw/?count=2")
     data = response.json()
     return data["cards"], data["remaining"]
+# Added function only to reshuffle the deck instead of creating a new one. will be used later
+    def ReShuffleDeck(deck_id):
+    response = requests.get(BASE_URL + deck_id + "/shuffle/")
+    data = response.json
+    return data["remaining"]
 
-
-# Ranking system for cards
+# Ranking system for cards that are strings.  
     def ConvertValues(value):
     if value == "ACE":
         return 14
@@ -66,6 +70,30 @@ def CreateDeck():
         if number > highest:
             highest = number
     return highest
+        
+# Main Program ( Will be split into multiple parts explaining how the API's work in action)
+## Main Part One
+    def main(): -- main function
+    print("Welcome to War, Have ya money ready!")
+    money = 100
+    deck_id = CreateDeck()
+
+    while money > 0:
+        print("\nYou have $", money)
+
+        try:
+            bet = int(input("Enter your bet amount: "))
+        except:
+            print("Invalid input.")
+            continue
+
+        if bet > money or bet <= 0:
+            print("Invalid bet amount.")
+            continue
+
+        player_cards, remaining = DrawCards(deck_id)
+        dealer_cards, remaining = DrawCards(deck_id)
+        print("Cards remainig:", remaining)
         
 
 
