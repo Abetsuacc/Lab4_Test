@@ -67,7 +67,7 @@ def CreateDeck():
     return highest
         
 # Main Program ( Will be split into multiple parts explaining how the API's work in action)
-## Main Part One
+## Main Part One - welcomes player to the game and call method CreateDeck that contains an API to make a new deck/shuffle. Prompts the user to "bet amount" 
     def main(): -- main function
     print("Welcome to War, Have ya money ready!")
     money = 100
