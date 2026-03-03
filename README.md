@@ -35,5 +35,14 @@ def CreateCards():
     return data["deck_id"]
     // changed formatting to make it easier to read and returned card_Id
 
+
+#Drawing Cards 
+# calls an API to draw cards 
+def draw_cards(deck_id):
+    response = requests.get(BASE_URL + deck_id + "/draw/?count=2")
+    data = response.json()
+    return data["cards"], data["remaining"] 
+
+
     
 
