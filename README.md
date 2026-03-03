@@ -20,3 +20,9 @@ if response.status_code == 200:
     
 else:
     print(f"Error: {response.status_code}")
+
+#I made a cleaner version of the api called above in line 14. I turned it into a function
+def Create_Deck():
+    response = requests.get(f"{BASE_URL}new/shuffle/?deck_count=1")
+    data = response.json()
+
