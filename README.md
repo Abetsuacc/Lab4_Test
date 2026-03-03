@@ -37,12 +37,5 @@ def DrawCards():
     data = response.json()
     return data["remaining"]
 
-
-
-
-
-
-
-    response = requests.get(f"{BASE_URL}new/shuffle/?deck_count=1")
     data = response.json()
 
