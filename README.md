@@ -27,7 +27,7 @@ def CreateDeck():
     data = response.json()
 
 
-# My first challenge was trying to draw cards and retrieving the card information.
+# My second challenge was trying to draw cards and retrieving the card information.
 I did a quick google search and saw on the documentation that I will have to manually make a cards list since the API does not return numeric ranking but just strings.
 I run into the follow error when it comes to returning the cards.
 def CreateCards():
@@ -43,6 +43,21 @@ def draw_cards(deck_id):
     response = requests.get(BASE_URL + deck_id + "/draw/?count=2")
     data = response.json()
     return data["cards"], data["remaining"] 
+
+#fixed line 30's problem when it came to ranking
+manuially made a ranking system
+def convert_value(value):
+    if value == "ACE":
+        return 14
+    elif value == "KING":
+        return 13
+    elif value == "QUEEN":
+        return 12
+    elif value == "JACK":
+        return 11
+    else:
+        return int(value)
+        
 
 
     
