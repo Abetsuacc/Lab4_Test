@@ -29,11 +29,11 @@ def CreateDeck():
 
 # My first challenge was trying to draw cards and retrieving the card information. I did a quick google search and saw on the documentation that I will have to manually make a cards list since the API does not return numeric ranking but just strings.
 I run into the follow error when it comes to returning the cards.
-def DrawCards():
+def CreateCards():
     response = requests.get(BASE_URL + "new/shuffle/?deck_count=1")
     data = response.json()
     return data["deck_id"]
     // changed formatting to make it easier to read and returned card_Id
 
-    data = response.json()
+    
 
