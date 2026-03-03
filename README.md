@@ -44,7 +44,7 @@ def draw_cards(deck_id):
     data = response.json()
     return data["cards"], data["remaining"] 
 
-#fixed line 30's problem when it came to ranking
+# Ranking system fixed
 manuially made a ranking system
 def convert_value(value):
     if value == "ACE":
