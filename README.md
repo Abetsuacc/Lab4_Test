@@ -39,14 +39,14 @@ def CreateCards():
 
 # Drawing Cards 
 calls an API to draw cards 
-def draw_cards(deck_id):
+def DrawCards(deck_id):
     response = requests.get(BASE_URL + deck_id + "/draw/?count=2")
     data = response.json()
     return data["cards"], data["remaining"] 
 
 # Ranking system fixed
-manuially made a ranking system
-def convert_value(value):
+manually made a ranking system
+    def ConvertValues(value):
     if value == "ACE":
         return 14
     elif value == "KING":
@@ -57,6 +57,14 @@ def convert_value(value):
         return 11
     else:
         return int(value)
+# Function to get the highest value card 
+    def GetHighest(cards):
+    highest = 0
+    for card in cards:
+        number = ConvertValues(card["value"])
+        if number > highest:
+            highest = number
+    return highest
         
 
 
