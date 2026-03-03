@@ -86,10 +86,44 @@ def CreateDeck():
             print("Invalid bet amount.")
             continue
 
+            print("Cards remainig:", remaining)
+        
+## Main Part Two - After user enters "bet amount." DrawCards() Function is then called which contsains an API that hold card values and suit, deck_id, and remaining amount of cards. - It then compares players card value against the dealer's cards. Person with the higher value card wins. Player can play again as long as money balance is greater than 0. if not they can restart a new game and CreateDeck() is called and sends a request using an API.
         player_cards, remaining = DrawCards(deck_id)
         dealer_cards, remaining = DrawCards(deck_id)
         print("Cards remainig:", remaining)
         
+
+        print("\nPlayer Cards:")
+        for card in player_cards:
+            print(card["value"], "of", card["suit"])
+
+        print("\nDealer Cards:")
+        for card in dealer_cards:
+            print(card["value"], "of", card["suit"])
+
+        player_high = GetHighest(player_cards)
+        dealer_high = GetHighest(dealer_cards)
+
+        if player_high > dealer_high:
+            print("\nYou win this round!")
+            money += bet
+        elif dealer_high > player_high:
+            print("\nDealer wins this round!")
+            money -= bet
+        else:
+            print("\nTie! No money lost.")
+
+        if remaining < 0:
+            print("\nReshuffling deck...")
+            deck_id = CreateDeck()
+           
+
+        again = input("\nPlay again? (y/n): ").lower()
+        if again != "y":
+            break
+
+    print("\nGame Over. Final Balance: $", money)
 
 
     
